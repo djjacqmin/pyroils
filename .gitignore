@@ -1,3 +1,4 @@
 .vscode/settings.json
 geckodriver.log
 *.pyc
+roils_url.txt

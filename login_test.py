@@ -8,7 +8,8 @@ class RoilsLogin(unittest.TestCase):
     """A test class to verify the login function"""
 
     def setUp(self):
-        self.url = "https://events.healthcaresafetyzone.com/EventsModuleWeb/default.aspx?cs=49ff4d9e-ece1-43ca-9a7c-5cd25901d84c&groupaccessId=cc2b44da-f619-4e8f-b159-f6518b893bde"
+        with open("roils_url.txt") as url_txt:
+            self.url = url_txt.readline()
         self.driver = webdriver.Firefox()
         self.driver.get(self.url)
 
@@ -28,7 +29,7 @@ class RoilsLogin(unittest.TestCase):
         # Checks if the word "Login" is in title
         assert login_page.is_title_matches(), "Login"
 
-        # Sets the text of search textbox to "pycon"
+        # Sets the text of the "Username" and "Password" boxes to user-defined input
         login_page.username_text_element = input("Username: ")
         login_page.password_text_element = getpass.getpass("Password: ")
         login_page.click_sign_in_button()
@@ -40,7 +41,8 @@ class RoilsLogin(unittest.TestCase):
         ), "Healthcare SafetyZone Portal – Home"
 
     def tearDown(self):
-        self.driver.close()
+        # self.driver.close()
+        pass
 
 
 if __name__ == "__main__":
