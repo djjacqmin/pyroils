@@ -41,8 +41,7 @@ class RoilsLogin(unittest.TestCase):
         ), "Healthcare SafetyZone Portal – Home"
 
     def tearDown(self):
-        # self.driver.close()
-        pass
+        self.driver.close()
 
 
 if __name__ == "__main__":
