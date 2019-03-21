@@ -11,6 +11,7 @@ class RoilsLogin(unittest.TestCase):
         with open("roils_url.txt") as url_txt:
             self.url = url_txt.readline()
         self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(25)
         self.driver.get(self.url)
 
     def test_login_on_roils(self):
@@ -27,18 +28,16 @@ class RoilsLogin(unittest.TestCase):
         login_page = pages.LoginPage(self.driver)
 
         # Checks if the word "Login" is in title
-        assert login_page.is_title_matches(), "Login"
+        assert login_page.has_correct_title(), "Login"
 
         # Sets the text of the "Username" and "Password" boxes to user-defined input
         login_page.username_text_element = input("Username: ")
         login_page.password_text_element = getpass.getpass("Password: ")
         login_page.click_sign_in_button()
 
-        search_results_page = pages.SearchResultsPage(self.driver)
+        main_page = pages.MainPage(self.driver)
         # Verifies that the results page is not empty
-        assert (
-            search_results_page.is_results_found()
-        ), "Healthcare SafetyZone Portal – Home"
+        assert main_page.has_correct_title(), "Healthcare SafetyZone Portal – Home"
 
     def tearDown(self):
         self.driver.close()

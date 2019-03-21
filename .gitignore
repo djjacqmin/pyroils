@@ -2,3 +2,4 @@
 geckodriver.log
 *.pyc
 roils_url.txt
+roils_credentials.txt
