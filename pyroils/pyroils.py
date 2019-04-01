@@ -24,7 +24,7 @@ class RoilsAutomator(object):
             if LoginPage.is_login_page(self.driver):
                 login_page = LoginPage(self.driver)
 
-                # Get username and password
+                # Set username and password
                 login_page.username_text_element = r_username
                 login_page.password_text_element = r_password
 

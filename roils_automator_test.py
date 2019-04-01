@@ -1,7 +1,6 @@
 import unittest
 from pyroils.pyroils import RoilsAutomator
 from pyroils.pages import MainPage, SubmitEventPage
-import getpass
 
 
 class RoilsAutomatorTests(unittest.TestCase):
@@ -17,7 +16,6 @@ class RoilsAutomatorTests(unittest.TestCase):
             self.r_password = login_creds.readline()
 
     def test_login_on_roils(self):
-        pass
         """
         Tests RO-ILS login feature. 
             (1) Create a new RoilsAutomator, which includes a login
